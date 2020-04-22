@@ -13,7 +13,8 @@
   In root directory build and up docker images
 
     $ docker-compose up --build
-
+   
+  You can access project on *localhost* or *localhost:80* after this command
 
 
 
