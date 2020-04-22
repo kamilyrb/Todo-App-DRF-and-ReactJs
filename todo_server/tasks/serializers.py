@@ -22,6 +22,7 @@ class TagSerialzer(serializers.ModelSerializer):
 
 class TaskSerializer(serializers.ModelSerializer):
     tags = serializers.SerializerMethodField()
+    created_at = serializers.SerializerMethodField()
 
     class Meta:
         model = Task
@@ -29,6 +30,9 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def get_tags(self, obj: Task):
         return TagSerialzer(obj.tag_set.all(), many=True).data
+
+    def get_created_at(self,obj: Task):
+        return obj.created_at.strftime("%m/%d/%Y, %H:%M")
 
 
 class TaskSaveSerializer(serializers.ModelSerializer):
